@@ -6,6 +6,7 @@ class DataSet:
     def __init__(self, file_name: str):
         self.file_name = file_name
         self.data = []
+        self.populate()
 
     def populate(self):
         if os.path.isfile(self.file_name):
