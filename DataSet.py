@@ -1,5 +1,6 @@
 import os
 import json
+from praw import models
 
 
 class DataSet:
@@ -22,6 +23,12 @@ class DataSet:
     def add(self, item: dict):
         self.data.append(item)
         self.write()
+
+    def is_in(self, comment_key: str, comment_value: str) -> models.Comment or None:
+        for item in self.data:
+            if comment_value == item[comment_key]:
+                return item
+        return None
 
     def write(self):
         with open(self.file_name, "w") as f:
