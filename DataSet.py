@@ -24,6 +24,12 @@ class DataSet:
         self.data.append(item)
         self.write()
 
+    def remove(self, post_id: str):
+        for item in self.data:
+            if item["id"] == post_id:
+                self.data.remove(item)
+        self.write()
+
     def is_in(self, comment_key: str, comment_value: str) -> models.Comment or None:
         for item in self.data:
             if comment_value == item[comment_key]:
